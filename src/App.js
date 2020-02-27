@@ -10,18 +10,21 @@ import './Main.css'
 import DevItem from './components/DevItem';
 import DevForm from './components/DevForm';
 
+
 function App() {
   const [devs, setDevs] = useState([]);
 
   useEffect(() => {
       async function loadDevs() {
         const response = await api.get('/devs');
+        console.log(response);
 
         setDevs(response.data);
       }
 
       loadDevs();
-    }, []
+    },
+    []
   );
 
   async function handleAddDev(data) {
@@ -35,11 +38,12 @@ function App() {
     <div id="app">
       <aside>
         <strong>Cadastrar</strong>
-        <DevForm onSubmit={ handleAddDev() } />
+        <DevForm onSubmit={handleAddDev} />
       </aside>
 
       <main>
         <ul>
+          {console.log(devs)}
           {devs.map(dev => (
             <DevItem key={dev._id} dev={dev}/>
           ))}

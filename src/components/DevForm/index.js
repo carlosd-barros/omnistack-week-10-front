@@ -29,6 +29,8 @@ function DevForm({ onSubmit }) {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    console.log('opaaa');
+
     await onSubmit({
       github_username,
       techs,
